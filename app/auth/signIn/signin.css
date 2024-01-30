@@ -1,0 +1,101 @@
+@media (min-width: 769px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .base {
+    padding: 1.5rem;
+    margin: 5rem auto;
+  }
+
+  .inputBox {
+    cursor: pointer;
+    /* margin-bottom: 0.5rem; */
+    width: 20rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    border: 0.05rem solid rgb(195, 195, 195);
+    text-indent: 1rem;
+    margin: 0.2rem auto;
+  }
+
+  .signinBtn {
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    margin-top: 30px;
+    background-color: #697ca0;
+    color: white;
+    border-radius: 0.5rem;
+    width: 20rem;
+    height: 3rem;
+    font-weight: 500;
+    font-size: medium;
+  }
+
+  .signupBtn {
+    border: 0.5px solid rgb(195, 195, 195);
+    cursor: pointer;
+    width: 20rem;
+    height: 3rem;
+    /* background-color: white; */
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: medium;
+  }
+
+  .signupBtn:hover {
+    border-radius: 0.5rem;
+    background-color: #476499;
+  }
+}
+
+@media (max-width: 768px) {
+  .base {
+    padding: 1.5rem;
+    margin: 5rem auto;
+  }
+
+  .inputBox {
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    height: 3rem;
+    border-radius: 0.5rem;
+    border: 0.05rem solid rgb(195, 195, 195);
+    text-indent: 1rem;
+  }
+
+  .signinBtn {
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    margin-top: 30px;
+    background-color: #052c72;
+    color: white;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 3rem;
+    font-weight: 500;
+    font-size: medium;
+  }
+
+  .signupBtn {
+    border: 0.5px solid rgb(195, 195, 195);
+    cursor: pointer;
+    width: 100%;
+    height: 3rem;
+    /* background-color: white; */
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: medium;
+  }
+
+  .signupBtn:hover {
+    border-radius: 0.5rem;
+    background-color: #476499;
+  }
+}

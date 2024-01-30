@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.contentWrapper {
+  flex: 1;
+}
+
+.navbar {
+  margin: 0;
+  background-color: #697ca0;
+  color: white;
+}
+
+.main {
+  /* margin: 1rem; */
+}
+
+.p-20 {
+  padding: 20px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+input {
+  box-sizing: border-box;
+  padding: 10px;
+  display: block;
+  margin-bottom: 10px;
+}
+button {
+  background: lightgray;
+  border: none;
+  border-radius: 5px;
+}
+
+.write-btn {
+  margin-left: 90%;
+  margin-bottom: 2rem;
+  width: 10rem;
+  height: 1rem;
+}
+.write-btn a {
+  font-size: large;
+  text-decoration: none;
+}
