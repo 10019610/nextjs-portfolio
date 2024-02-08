@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(req, res) {
+  console.log("ssssssssssssssssss", req.body);
   let session = await getServerSession(req, res, authOptions);
   if (session) {
     req.body.author = session.user.email;
@@ -17,6 +18,7 @@ export default async function handler(req, res) {
       title: req.body.title,
       content: req.body.content,
       author: req.body.author,
+      image: req.body.image,
     });
     res.redirect(302, "/list");
   }

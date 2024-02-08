@@ -1,10 +1,10 @@
 "use client";
 import "./globals.css";
-import Header from "./conponents/header/Header";
+import Header from "./components/header/Header";
 import { SessionProvider } from "next-auth/react";
-import Footer from "./conponents/footer/Footer";
+import Footer from "./components/footer/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
-import BootstrapClient from "./conponents/setting/BootstrapClient";
+import BootstrapClient from "./components/setting/BootstrapClient";
 
 export default function RootLayout({ children }) {
   return (

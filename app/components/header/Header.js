@@ -29,16 +29,16 @@ const Header = () => {
   };
 
   return (
-    <header>
-      <div className={classes.nav} style={{ display: "flex" }}>
+    <header className={classes.header}>
+      <div className={classes.nav}>
         <HamburgerButton onClick={handleMenuClick} />
         <div className={classes.logo}>
-          <Link href="/" className={classes.main}>
+          <Link href="/">
             <Image
               src="/logo1.png"
               priority
               alt="logo"
-              width={250}
+              width={200}
               height={80}
             />
 

@@ -4,17 +4,29 @@ import { authOptions } from "../auth/[...nextauth]";
 import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
-  if (req.method == "POST") {
+  console.log(req.body);
+  let session = await getServerSession(req, res, authOptions);
+  if (session) {
     let db = (await connectDB).db("yjproject");
-    let session = await getServerSession(req, res, authOptions);
-    let data = req.body;
-    console.log(data);
-    let result = db.collection("like").insertOne({
-      createDate: Date(),
-      author: session.user.email,
+    let likeCheck = await db.collection("like").findOne({
+      clickedUser: session.user.email,
       postId: new ObjectId(req.body),
     });
-    // console.log("dddddddddddddddddd", req);
-    return res.status(200).json("글에 좋아요를 눌렀습니다");
+    if (likeCheck == null) {
+      let result = db.collection("like").insertOne({
+        createDate: Date(),
+        postId: new ObjectId(req.body),
+        clickedUser: session.user.email,
+      });
+      res.status(200).json("좋아요기능 성공");
+    } else {
+      await db.collection("like").deleteOne({
+        clickedUser: session.user.email,
+        postId: new ObjectId(req.body),
+      });
+      res.status(200).json("좋아요취소");
+    }
+  } else {
+    res.status(500).json("로그인이 필요합니다.");
   }
 }

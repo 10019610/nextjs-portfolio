@@ -10,7 +10,6 @@ import LoginBtn from "../button/LoginBtn";
 import LogoutBtn from "../button/LogoutBtn";
 
 const HamburgerMenu = ({ isOpen, onClose, session }) => {
-  console.log(session);
   return (
     <div className={`${classes.hamburger_menu} ${isOpen ? classes.open : ""}`}>
       <div>
@@ -45,16 +44,6 @@ const HamburgerMenu = ({ isOpen, onClose, session }) => {
             LIST
           </Link>
         </li>
-        {/* <li>
-          <Link href="/member" onClick={onClose}>
-            member
-          </Link>
-        </li>
-        <li>
-          <Link href="/" onClick={onClose}>
-            menu3
-          </Link>
-        </li> */}
       </ul>
     </div>
   );

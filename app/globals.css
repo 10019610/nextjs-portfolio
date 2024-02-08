@@ -18,7 +18,7 @@ body {
 }
 
 .main {
-  /* margin: 1rem; */
+  margin: 1rem 4rem;
 }
 
 .p-20 {
@@ -40,7 +40,7 @@ button {
   border-radius: 5px;
 }
 
-.write-btn {
+/* .write-btn {
   margin-left: 90%;
   margin-bottom: 2rem;
   width: 10rem;
@@ -49,4 +49,4 @@ button {
 .write-btn a {
   font-size: large;
   text-decoration: none;
-}
+} */

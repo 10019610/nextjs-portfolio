@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import "./signin.css";
 import { getProviders, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { FacebookLoginButton } from "react-social-login-buttons";
+import { GithubLoginButton } from "react-social-login-buttons";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -74,25 +77,26 @@ const LoginPage = () => {
           </button>
         </div>
         <div>
-          <button
-            className="inputBox"
+          <img
+            src="/kakao_login.png"
             onClick={() =>
               signIn("kakao", { redirect: true, callbackUrl: "/" })
             }
-          >
-            kakao
-          </button>
+            style={{ cursor: "pointer", width: "20rem" }}
+          />
         </div>
+
         <div>
-          <button
-            className="inputBox"
+          <GithubLoginButton
+            style={{ width: "20rem", fontSize: "0.85rem", borderRadius: "4px" }}
             onClick={() =>
               signIn("github", { redirect: true, callbackUrl: "/" })
             }
           >
-            github
-          </button>
+            <span style={{ marginLeft: "4.3rem" }}>Login with GitHub</span>
+          </GithubLoginButton>
         </div>
+
         <div>
           <button className="signupBtn" onClick={signupRouter}>
             Sign Up

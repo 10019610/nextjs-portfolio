@@ -9,18 +9,23 @@ export default function Comment(props) {
   // console.log(reply);
 
   const inputHandler = (e) => {
-    // if (comment) {
-    // e.preventDefault();
     fetch("/api/comment/newComment", {
       method: "POST",
       body: JSON.stringify({
         comment: comment,
         parent: props.parentId,
       }),
-    }).then(() => {
-      setComment("");
-    });
-    // }
+    })
+      .then(() => {
+        setComment("");
+      })
+      .then(() => {
+        fetch("/api/comment/list?id=" + props.parentId)
+          .then((r) => r.json())
+          .then((data) => {
+            setReply(data.result);
+          });
+      });
   };
   const onSubmit = () => {
     inputHandler();
@@ -43,7 +48,9 @@ export default function Comment(props) {
 
   return (
     <div className="card my-4">
-      <form className="">
+      <form>
+        {/* form 태그 안에서 input 태그가 하나일 때 엔터키를 누르면 새로고침이 되는 현상 방지 */}
+        <input type="text" style={{ display: "none" }} />
         <input
           className="form-control"
           value={comment}
@@ -53,7 +60,6 @@ export default function Comment(props) {
           }}
           onKeyDown={keyDown}
         />
-        {/* <button onClick={(e) => {}}>댓글전송</button> */}
       </form>
       <button onClick={() => inputHandler()}>댓글 작성</button>
       {reply.length > 0

@@ -1,6 +1,7 @@
 import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
 import Comment from "./Comment";
+import Like from "@/app/components/button/likeButton";
 
 export default async function Detail(props) {
   const client = await connectDB;
@@ -11,17 +12,17 @@ export default async function Detail(props) {
     .findOne({ _id: new ObjectId(props.params.id) });
   console.log(result);
   return (
-    <div>
+    <div className="m-20">
       <article>
         <header className="mb-4">
-          <h1 className="fw-bolder mb-1">{result.title}</h1>
+          <h1 className="fw-bolder mb-3">{result.title}</h1>
           <h5>{result.author}</h5>
           <div className="text-muted fst-italic mb-2">{result.createDate}</div>
         </header>
         <figure className="mb-4">
           <img
             className="img-fluid rounded"
-            src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
+            src={`https://yjprojectimage.s3.ap-northeast-2.amazonaws.com/${result.image}`}
             alt="..."
           />
         </figure>
@@ -30,7 +31,7 @@ export default async function Detail(props) {
         </section>
       </article>
       <h4></h4>
-      <div>좋아요 1</div>
+      <Like postId={result._id.toString()} />
       <Comment parentId={props.params.id} />
     </div>
   );

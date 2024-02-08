@@ -12,6 +12,7 @@ export default async function handler(req, res) {
       name: data.name,
       email: data.email,
       password: hash,
+      image: "/unknown_user2.png",
       memberType: "NORMAL",
       createDate: Date(),
       updateDate: Date(),

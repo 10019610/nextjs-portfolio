@@ -6,19 +6,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 3.5rem;
+    /* width: 3rem; */
     height: 4.5rem;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    margin-right: 10rem;
   }
 
   .hamburger_line {
-    width: 100%;
+    width: 90%;
     height: 0.4rem;
     background-color: #fff;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
     margin-left: 3rem;
     border-radius: 0.5rem;
   }
@@ -38,7 +37,7 @@
   }
 
   .hamburger_menu.open {
-    top: 10;
+    top: 0;
     left: 0; /* 화면 안으로 이동하도록 설정 */
   }
 
@@ -78,11 +77,6 @@
     height: 2.5rem;
     background-color: #052c72;
     border-radius: 0.5rem;
-  }
-
-  .inBtn {
-    text-decoration: none;
-    cursor: pointer;
   }
 
   .upBtn {
