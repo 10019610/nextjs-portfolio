@@ -20,11 +20,15 @@ export default async function Detail(props) {
           <div className="text-muted fst-italic mb-2">{result.createDate}</div>
         </header>
         <figure className="mb-4">
-          <img
-            className="img-fluid rounded"
-            src={`https://yjprojectimage.s3.ap-northeast-2.amazonaws.com/${result.image}`}
-            alt="..."
-          />
+          {result.image ? (
+            <img
+              className="img-fluid rounded"
+              src={`https://yjprojectimage.s3.ap-northeast-2.amazonaws.com/${result.image}`}
+              alt="..."
+            />
+          ) : (
+            <div></div>
+          )}
         </figure>
         <section className="mb-5">
           <p className="fs-5 mb-4">{result.content}</p>

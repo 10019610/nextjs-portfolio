@@ -8,17 +8,20 @@ export default function ListItem(props) {
     <div className={classes.list}>
       {props.result.map((item, i) => (
         <div className={classes.list_item} key={i}>
-          {props.result[i].image !== "" ? (
-            <Link href={"/detail/" + props.result[i]._id}>
-              <img
-                src={`https://yjprojectimage.s3.ap-northeast-2.amazonaws.com/${props.result[i].image}`}
-              />
-            </Link>
-          ) : (
-            <Link href={"/detail/" + props.result[i]._id}>
-              <img src="/logo1.png" />
-            </Link>
-          )}
+          <div>
+            {props.result[i].image !== "" ? (
+              <Link href={"/detail/" + props.result[i]._id}>
+                <img
+                  src={`https://yjprojectimage.s3.ap-northeast-2.amazonaws.com/${props.result[i].image}`}
+                />
+              </Link>
+            ) : (
+              <Link href={"/detail/" + props.result[i]._id}>
+                <img src="/logo1.png" />
+              </Link>
+            )}
+          </div>
+
           <Link
             href={"/detail/" + props.result[i]._id}
             style={{ textDecoration: "none", color: "black" }}
@@ -54,35 +57,6 @@ export default function ListItem(props) {
             🗑️
           </span>
           <Like postId={props.result[i]._id} />
-          {/* {heart === "❤️" ? (
-            <span
-              onClick={() => {
-                fetch("/api/post/dislike", {
-                  method: "DELETE",
-                  body: props.result[i]._id,
-                }).then((result) => {
-                  setHeart("🤍");
-                });
-              }}
-              style={{ cursor: "pointer" }}
-            >
-              {heart}
-            </span>
-          ) : (
-            <span
-              onClick={() => {
-                fetch("/api/post/like", {
-                  method: "POST",
-                  body: props.result[i]._id,
-                }).then((result) => {
-                  setHeart("❤️");
-                });
-              }}
-              style={{ cursor: "pointer" }}
-            >
-              {heart}
-            </span>
-          )} */}
 
           <p>
             {new Date(item.createDate).getMonth() + 1}월{" "}

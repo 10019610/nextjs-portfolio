@@ -1,8 +1,9 @@
 "use client"; // this is a client component
 
 import { useEffect, useState } from "react";
-import "./signup.css";
 import { useRouter } from "next/navigation";
+import classes from "./signup.module.css";
+import Link from "next/link";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -34,7 +35,8 @@ const Signup = () => {
     });
     const data = await response.json();
     if (!response.ok) {
-      throw new Error(data.message || "아이디 생성 실패");
+      alert("이미 " + data + " 계정으로 가입된 이메일입니다.");
+      // throw new Error(data.message || "아이디 생성 실패");
     }
     return data;
   }
@@ -57,15 +59,19 @@ const Signup = () => {
       return alert("입력된 비밀번호를 확인하십시오");
     }
     const result = await createUser(signupParam);
-    router.push("/signin");
+    // router.push("/signin");
   };
 
   return (
-    <div className="base">
-      <form className="form">
+    <div className={classes.base}>
+      <form className={classes.form}>
+        <Link href="/">
+          <img className={classes.headLogo} src="/logo1.png" />
+        </Link>
+        <div className={classes.headName}>Sign in to 0_J0.log</div>
         <div>
           <input
-            className="inputBox"
+            className={classes.inputBox}
             placeholder="Name"
             name="name"
             type="text"
@@ -76,7 +82,7 @@ const Signup = () => {
         </div>
         <div>
           <input
-            className="inputBox"
+            className={classes.inputBox}
             placeholder="E-Mail"
             name="email"
             type="email"
@@ -87,7 +93,7 @@ const Signup = () => {
         </div>
         <div>
           <input
-            className="inputBox"
+            className={classes.inputBox}
             placeholder="Password"
             name="password"
             type="password"
@@ -98,7 +104,7 @@ const Signup = () => {
         </div>
         <div>
           <input
-            className="inputBox"
+            className={classes.inputBox}
             placeholder="PasswordCheck"
             type="password"
             value={passwordCheck}
@@ -107,7 +113,7 @@ const Signup = () => {
           />
         </div>
 
-        <button onClick={handleSubmit} className="btn">
+        <button onClick={handleSubmit} className={classes.btn}>
           Sign up
         </button>
       </form>

@@ -5,15 +5,6 @@ export default function Like(props) {
   let [like, setLike] = useState(0);
   let [heart, setHeart] = useState("🤍");
 
-  //   useEffect(() => {
-  //     fetch(`/api/likeapi/b?id=${props.postId}`)
-  //       .then((r) => {
-  //         return r.json();
-  //       })
-  //       .then((result) => {
-  //       });
-  //   }, [like]);
-
   useEffect(() => {
     fetch("/api/post/likeFunc", {
       method: "POST",
@@ -23,19 +14,26 @@ export default function Like(props) {
         return r.json();
       })
       .then((result) => {
-        console.log(result.heart);
-        console.log(result.likeCount);
         setHeart(result.heart);
         setLike(result.likeCount);
       });
   }, [heart]);
   return (
     <div>
+      <span>{like}</span>
+
       <span
+        style={{ cursor: "pointer" }}
         onClick={() => {
           fetch("/api/post/like", {
             method: "POST",
             body: props.postId,
+          }).then((r) => {
+            if (r.status === 500) {
+              alert("로그인이 필요합니다.");
+              return;
+            }
+            console.log(r.status);
           });
           setLike();
           setHeart();
@@ -43,7 +41,6 @@ export default function Like(props) {
       >
         {heart}
       </span>
-      <span>{like}</span>
     </div>
   );
 }

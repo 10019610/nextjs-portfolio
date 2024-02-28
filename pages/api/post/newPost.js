@@ -15,10 +15,13 @@ export default async function handler(req, res) {
     let db = (await connectDB).db("yjproject");
     let result = db.collection("post").insertOne({
       createDate: Date(),
+      updateDate: "",
       title: req.body.title,
       content: req.body.content,
       author: req.body.author,
       image: req.body.image,
+      useYn: "Y",
+      delYn: "N",
     });
     res.redirect(302, "/list");
   }

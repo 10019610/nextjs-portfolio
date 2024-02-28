@@ -8,13 +8,20 @@ export default async function handler(req, res) {
     let db = (await connectDB).db("yjproject");
     let session = await getServerSession(req, res, authOptions);
     req.body = JSON.parse(req.body);
-    let result = db.collection("comment").insertOne({
-      createDate: Date(),
-      comment: req.body.comment,
-      author: session.user.email,
-      image: session.user.image,
-      parent: new ObjectId(req.body.parent),
-    });
-    res.redirect(302, "/list");
+    if (session) {
+      let result = db.collection("comment").insertOne({
+        createDate: Date(),
+        updateDate: "",
+        comment: req.body.comment,
+        author: session.user.email,
+        image: session.user.image,
+        parent: new ObjectId(req.body.parent),
+        useYn: "Y",
+        delYn: "N",
+      });
+      res.redirect(302, "/list");
+    } else {
+      return res.status(500).json("로그인 여부를 확인하십시오.");
+    }
   }
 }

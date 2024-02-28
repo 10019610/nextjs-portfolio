@@ -25,11 +25,31 @@
     cursor: pointer;
     margin-bottom: 0.5rem;
     margin-top: 2rem;
-    background-color: #052c72;
+    background-color: #697ca0;
     color: white;
     border-radius: 0.5rem;
     width: 20rem;
     height: 3rem;
+    font-weight: 500;
+  }
+
+  .btn:hover {
+    background-color: #d9e6ff;
+    font-weight: bold;
+    color: #697ca0;
+  }
+
+  .headLogo {
+    /* width: 40%; */
+    margin-bottom: 2rem;
+  }
+
+  .headName {
+    font-size: x-large;
+    font-weight: 200;
+    margin-bottom: 4rem;
+    font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   }
 }
 

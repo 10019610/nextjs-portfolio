@@ -1,6 +1,5 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 export default function Comment(props) {
@@ -9,23 +8,28 @@ export default function Comment(props) {
   // console.log(reply);
 
   const inputHandler = (e) => {
-    fetch("/api/comment/newComment", {
-      method: "POST",
-      body: JSON.stringify({
-        comment: comment,
-        parent: props.parentId,
-      }),
-    })
-      .then(() => {
-        setComment("");
+    if (comment !== "") {
+      fetch("/api/comment/newComment", {
+        method: "POST",
+        body: JSON.stringify({
+          comment: comment,
+          parent: props.parentId,
+        }),
       })
-      .then(() => {
-        fetch("/api/comment/list?id=" + props.parentId)
-          .then((r) => r.json())
-          .then((data) => {
-            setReply(data.result);
-          });
-      });
+        .then(() => {
+          setComment("");
+        })
+        .then(() => {
+          fetch("/api/comment/list?id=" + props.parentId)
+            .then((r) => r.json())
+            .then((data) => {
+              setReply(data.result);
+            });
+        });
+    } else {
+      alert("댓글을 작성해주세요.");
+      return;
+    }
   };
   const onSubmit = () => {
     inputHandler();
@@ -64,7 +68,7 @@ export default function Comment(props) {
       <button onClick={() => inputHandler()}>댓글 작성</button>
       {reply.length > 0
         ? reply.map((a, i) => (
-            <section className="mb-2" key={i}>
+            <section className="mb-1" key={i}>
               <div className="card bg-light">
                 <div className="card-body">
                   <div className="d-flex mb-0">
@@ -100,7 +104,12 @@ export default function Comment(props) {
                       <span>
                         <span>
                           {new Date(a.createDate).getMonth() + 1}월{" "}
-                          {new Date(a.createDate).getDate()}일
+                          {new Date(a.createDate).getDate()}일{" "}
+                          {new Date(a.createDate).getHours()}:
+                          {String(new Date(a.createDate).getMinutes()).padStart(
+                            2,
+                            "0"
+                          )}
                         </span>
                         <span
                           onClick={(e) => {
