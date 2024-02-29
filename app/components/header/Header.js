@@ -34,13 +34,7 @@ const Header = () => {
         <HamburgerButton onClick={handleMenuClick} />
         <div className={classes.logo}>
           <Link href="/">
-            <Image
-              src="/logo1.png"
-              priority
-              alt="logo"
-              width={200}
-              height={80}
-            />
+            <img src="/logo.jpg" />
 
             {/* 내가 만드는 홈페이지 */}
           </Link>

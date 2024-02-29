@@ -13,7 +13,8 @@ body {
 
 .navbar {
   margin: 0;
-  background-color: #697ca0;
+  /* background-color: #697ca0; */
+  box-shadow: 0 4px 4px -2px #182145;
   color: white;
 }
 
